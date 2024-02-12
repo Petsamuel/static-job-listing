@@ -5,19 +5,47 @@ import { data } from "../data";
 
 export default function IndexPage() {
   // const [filterSkill, setFilterSkill] = useState(data);
-  // console.log(filterSkill);
+  const [container, setContainer] = useState<string[]>([]);
+
+  const addFilter = (userFilter: string | string[]) => {
+    // Convert userFilter to an array if it's not already
+    const newFilters = Array.isArray(userFilter) ? userFilter : [userFilter];
+
+    // Create a copy of the current state array
+    const newContainer = container.slice();
+
+    // Use push on the copied array to add new unique values
+    newFilters.forEach((filter) => {
+      if (!newContainer.includes(filter)) {
+        newContainer.push(filter);
+      }
+    });
+
+    // Set the state with the new array
+    setContainer(newContainer);
+  };
 
   return (
     <Fragment>
       <header>
         <Header />
       </header>
+      {container.length > 0 ? (
+        <section className=" flex relative -mt-10 " id="filter">
+          <div className="bg-white p-10 rounded-lg flex justify-between gap-32 items-center shadow-lg w-full mx-16 ">
+            <div></div>
+            <div className="cursor-pointer">Clear</div>
+          </div>
+        </section>
+      ) : (
+        ""
+      )}
       <main className="my-14 flex justify-center mx-8">
         <div className="mx-2">
           {data.map((value) => (
             <div
               key={value.id}
-              className="bg-white cursor-pointer lg:my-6 my-12  flex lg:flex-row flex-col lg:items-center rounded-lg shadow-lg lg:px-8  px-4  justify-between lg:gap-64 "
+              className="bg-[#ffffff] cursor-pointer lg:my-6 my-12  flex lg:flex-row flex-col lg:items-center rounded-lg shadow-lg lg:px-8  px-4  justify-between lg:gap-64 "
             >
               <div className="lg:py-10 pt-10 flex relative min-w-max">
                 <div className="px-4 absolute lg:sticky  -left-25 -top-7 ">
@@ -63,16 +91,31 @@ export default function IndexPage() {
                   </div>
                 </div>
               </div>
-              <div className="font-semibold text-[#5ba4a4] items-center flex place-content-end py-5">
-                <span className="p-1.5 mx-1 rounded-lg bg-[#f2f8f6] hover:bg-[#5ba4a4] hover:text-white ">
+              <div className="bg-[#5ba4a4] my-3 h-1 rounded-full"></div>
+
+              <div className="font-semibold text-[#5ba4a4] items-center flex lg:place-content-end py-5 flex-wrap flex-auto space-y-1">
+                <span
+                  onClick={() => {
+                    addFilter(value.role);
+                  }}
+                  className="p-1.5 mx-1 rounded-lg bg-[#f2f8f6] hover:bg-[#5ba4a4] hover:text-white "
+                >
                   {value.role}
                 </span>
-                <span className="p-1.5 mx-1 rounded-lg bg-[#f2f8f6] hover:bg-[#5ba4a4] hover:text-white ">
+                <span
+                  onClick={() => {
+                    addFilter(value.level);
+                  }}
+                  className="p-1.5 mx-1 rounded-lg bg-[#f2f8f6] hover:bg-[#5ba4a4] hover:text-white "
+                >
                   {value.level}
                 </span>
                 <span>
                   {value.languages.map((val, key) => (
                     <span
+                      onClick={() => {
+                        addFilter(value.languages);
+                      }}
                       className="p-2 mx-2 rounded-lg bg-[#f2f8f6] hover:bg-[#5ba4a4] hover:text-white "
                       key={key}
                     >
