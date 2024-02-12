@@ -1,11 +1,12 @@
-// import { useState } from "react";
-import Header from "./components/Header";
-function App() {
+import { Fragment } from "react";
+import IndexPage from "./pages";
+
+const App = () => {
   return (
-    <>
-      <Header />
-    </>
+    <Fragment>
+      <IndexPage />
+    </Fragment>
   );
-}
+};
 
 export default App;
