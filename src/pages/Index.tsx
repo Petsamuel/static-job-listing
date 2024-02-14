@@ -5,35 +5,42 @@ import { data } from "../data";
 
 export default function IndexPage() {
   // const [filterSkill, setFilterSkill] = useState(data);
-  const [container, setContainer] = useState<string[]>([]);
+const [container, setContainer] = useState<string[]>([]);
 
-  const addFilter = (userFilter: string | string[]) => {
-    // Convert userFilter to an array if it's not already
-    const newFilters = Array.isArray(userFilter) ? userFilter : [userFilter];
+const toggleFilter = (userFilter: string | string[]) => {
+  const filtersToAdd = Array.isArray(userFilter) ? userFilter : [userFilter];
 
-    // Create a copy of the current state array
-    const newContainer = container.slice();
+  const newContainer = container.filter(
+    (filter) => !filtersToAdd.includes(filter)
+  );
 
-    // Use push on the copied array to add new unique values
-    newFilters.forEach((filter) => {
-      if (!newContainer.includes(filter)) {
-        newContainer.push(filter);
-      }
-    });
+  setContainer((prevContainer) => [...newContainer, ...filtersToAdd]);
+};
 
-    // Set the state with the new array
-    setContainer(newContainer);
-  };
 
   return (
     <Fragment>
       <header>
         <Header />
       </header>
+
       {container.length > 0 ? (
         <section className=" flex relative -mt-10 " id="filter">
-          <div className="bg-white p-10 rounded-lg flex justify-between gap-32 items-center shadow-lg w-full mx-16 ">
-            <div></div>
+          <div className="bg-white p-5 rounded-lg flex justify-between gap-32 items-center shadow-lg w-full mx-16 ">
+            <div>
+              <div className="flex items-center ">
+                {container.map((val, key) => (
+                  <div className="flex items-center font-bold mx-2" key={key}>
+                    <div className="p-2 bg-[#f2f8f6] text-[#5ba4a4] rounded-l-lg cursor-pointer w-fit">
+                      <p className="px-2 ">{val}</p>
+                    </div>
+                    <span className="p-2 bg-[#5ba4a4] text-white rounded-r-lg cursor-pointer">
+                      X
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
             <div className="cursor-pointer">Clear</div>
           </div>
         </section>
@@ -96,7 +103,7 @@ export default function IndexPage() {
               <div className="font-semibold text-[#5ba4a4] items-center flex lg:place-content-end py-5 flex-wrap flex-auto space-y-1">
                 <span
                   onClick={() => {
-                    addFilter(value.role);
+                    toggleFilter(value.role);
                   }}
                   className="p-1.5 mx-1 rounded-lg bg-[#f2f8f6] hover:bg-[#5ba4a4] hover:text-white "
                 >
@@ -104,7 +111,7 @@ export default function IndexPage() {
                 </span>
                 <span
                   onClick={() => {
-                    addFilter(value.level);
+                    toggleFilter(value.level);
                   }}
                   className="p-1.5 mx-1 rounded-lg bg-[#f2f8f6] hover:bg-[#5ba4a4] hover:text-white "
                 >
@@ -114,7 +121,7 @@ export default function IndexPage() {
                   {value.languages.map((val, key) => (
                     <span
                       onClick={() => {
-                        addFilter(value.languages);
+                        toggleFilter(value.languages);
                       }}
                       className="p-2 mx-2 rounded-lg bg-[#f2f8f6] hover:bg-[#5ba4a4] hover:text-white "
                       key={key}
