@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import IndexPage from "./pages";
+import IndexPage from "./pages/Index";
 
 const App = () => {
   return (
