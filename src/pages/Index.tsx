@@ -5,18 +5,17 @@ import { data } from "../data";
 
 export default function IndexPage() {
   // const [filterSkill, setFilterSkill] = useState(data);
-const [container, setContainer] = useState<string[]>([]);
+  const [container, setContainer] = useState<string[]>([]);
 
-const toggleFilter = (userFilter: string | string[]) => {
-  const filtersToAdd = Array.isArray(userFilter) ? userFilter : [userFilter];
+  const toggleFilter = (userFilter: string | string[]) => {
+    const filtersToAdd = Array.isArray(userFilter) ? userFilter : [userFilter];
 
-  const newContainer = container.filter(
-    (filter) => !filtersToAdd.includes(filter)
-  );
+    const newContainer = container.filter(
+      (filter) => !filtersToAdd.includes(filter)
+    );
 
-  setContainer((prevContainer) => [...newContainer, ...filtersToAdd]);
-};
-
+    setContainer(() => [...newContainer, ...filtersToAdd]);
+  };
 
   return (
     <Fragment>
