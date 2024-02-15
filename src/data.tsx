@@ -4,7 +4,7 @@ import account from "../src/images/account.svg";
 import myhome from "../src/images/myhome.svg";
 import studios from "../src/images/loop-studios.svg";
 import faceit from "../src/images/faceit.svg";
-import shortly from "../src/images/Shortly.svg";
+import shortly from "../src/images/shortly.svg";
 import insure from "../src/images/insure.svg";
 import eyecam from "../src/images/eyecam-co.svg";
 import air_filters from "../src/images/the-air-filter-company.svg";
