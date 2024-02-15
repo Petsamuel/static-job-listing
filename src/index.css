@@ -9,6 +9,11 @@
   margin: 0px;
   font-family: "League Spartan";
 }
+.Featured {
+  border-left: 3px;
+  border-left: solid;
+  border-left-color: #5ba4a4;
+}
 
 body {
   background-color: hsl(180, 31%, 95%);
