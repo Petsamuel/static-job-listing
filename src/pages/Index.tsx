@@ -4,7 +4,6 @@ import Footer from "../components/Footer";
 import { data } from "../data";
 
 export default function IndexPage() {
-  // const [filterSkill, setFilterSkill] = useState(data);
   const [container, setContainer] = useState<string[]>([]);
 
   const toggleFilter = (userFilter: string | string[]) => {
@@ -25,33 +24,37 @@ export default function IndexPage() {
 
       {container.length > 0 ? (
         <section className=" flex relative -mt-10 " id="filter">
-          <div className="bg-white p-5 rounded-lg flex justify-between gap-32 items-center shadow-lg w-full mx-16 ">
-            <div>
-              <div className="flex items-center ">
-                {container.map((val, key) => (
-                  <div className="flex items-center font-bold mx-2" key={key}>
-                    <div className="p-2 bg-[#f2f8f6] text-[#5ba4a4] rounded-l-lg cursor-pointer w-fit">
-                      <p className="px-2 ">{val}</p>
-                    </div>
-                    <span className="p-2 bg-[#5ba4a4] text-white rounded-r-lg cursor-pointer">
-                      X
-                    </span>
+          <div className="bg-white p-5 rounded-lg flex justify-between gap-32 items-center shadow-lg  mx-16 w-screen">
+            <div className="flex items-center flex-wrap">
+              {container.map((val, key) => (
+                <div className="flex items-center font-bold m-2" key={key}>
+                  <div className="p-2 bg-[#f2f8f6] text-[#5ba4a4] rounded-l-lg cursor-pointer w-fit">
+                    <p className="px-2 ">{val}</p>
                   </div>
-                ))}
-              </div>
+                  <span
+                    onClick={() => null}
+                    className="p-2 bg-[#5ba4a4] text-white rounded-r-lg cursor-pointer"
+                  >
+                    X
+                  </span>
+                </div>
+              ))}
             </div>
-            <div className="cursor-pointer">Clear</div>
+
+            <div onClick={() => setContainer([])} className="cursor-pointer">
+              Clear
+            </div>
           </div>
         </section>
       ) : (
         ""
       )}
       <main className="my-14 flex justify-center mx-8">
-        <div className="mx-2">
+        <div className="mx-2 ">
           {data.map((value) => (
             <div
               key={value.id}
-              className="bg-[#ffffff] cursor-pointer lg:my-6 my-12  flex lg:flex-row flex-col lg:items-center rounded-lg shadow-lg lg:px-8  px-4  justify-between lg:gap-64 "
+              className="bg-[#ffffff] cursor-pointer lg:my-6 my-12  flex lg:flex-row flex-col lg:items-center rounded-lg shadow-lg lg:px-8  px-4  justify-between lg:gap-20"
             >
               <div className="lg:py-10 pt-10 flex relative min-w-max">
                 <div className="px-4 absolute lg:sticky  -left-25 -top-7 ">
@@ -99,36 +102,36 @@ export default function IndexPage() {
               </div>
               <div className="bg-[#5ba4a4] my-3 h-1 rounded-full"></div>
 
-              <div className="font-semibold text-[#5ba4a4] items-center flex lg:place-content-end py-5 flex-wrap flex-auto space-y-1">
-                <span
+              <div className="font-semibold text-[#5ba4a4] items-center flex lg:place-content-end pb-5 flex-wrap lg:flex-nowrap">
+                <div
                   onClick={() => {
                     toggleFilter(value.role);
                   }}
-                  className="p-1.5 mx-1 rounded-lg bg-[#f2f8f6] hover:bg-[#5ba4a4] hover:text-white "
+                  className="p-1.5 mx-1 rounded-lg bg-[#f2f8f6] hover:bg-[#5ba4a4] hover:text-white flex items-center gap-2"
                 >
                   {value.role}
-                </span>
-                <span
+                </div>
+                <div
                   onClick={() => {
                     toggleFilter(value.level);
                   }}
-                  className="p-1.5 mx-1 rounded-lg bg-[#f2f8f6] hover:bg-[#5ba4a4] hover:text-white "
+                  className="p-1.5 mx-1 rounded-lg bg-[#f2f8f6] hover:bg-[#5ba4a4] hover:text-white flex items-center"
                 >
                   {value.level}
-                </span>
-                <span>
+                </div>
+                <div className="flex items-center ">
                   {value.languages.map((val, key) => (
-                    <span
+                    <div
                       onClick={() => {
-                        toggleFilter(value.languages);
+                        toggleFilter(val);
                       }}
-                      className="p-2 mx-2 rounded-lg bg-[#f2f8f6] hover:bg-[#5ba4a4] hover:text-white "
                       key={key}
+                      className="p-1.5 mx-1 rounded-lg bg-[#f2f8f6] hover:bg-[#5ba4a4] hover:text-white flex items-center"
                     >
                       {val}
-                    </span>
+                    </div>
                   ))}
-                </span>
+                </div>
               </div>
             </div>
           ))}

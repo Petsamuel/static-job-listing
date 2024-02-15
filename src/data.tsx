@@ -4,7 +4,7 @@ import account from "../src/images/account.svg";
 import myhome from "../src/images/myhome.svg";
 import studios from "../src/images/loop-studios.svg";
 import faceit from "../src/images/faceit.svg";
-import Shortly from "../src/images/Shortly.svg";
+import shortly from "../src/images/Shortly.svg";
 import insure from "../src/images/insure.svg";
 import eyecam from "../src/images/eyecam-co.svg";
 import air_filters from "../src/images/the-air-filter-company.svg";
@@ -13,7 +13,7 @@ export const data = [
   {
     id: 1,
     company: "Photosnap",
-    logo:  photosnap ,
+    logo: photosnap,
     new: true,
     featured: true,
     position: "Senior Frontend Developer",
@@ -28,7 +28,7 @@ export const data = [
   {
     id: 2,
     company: "Manage",
-    logo:  manage ,
+    logo: manage,
     new: true,
     featured: true,
     position: "Fullstack Developer",
@@ -43,7 +43,7 @@ export const data = [
   {
     id: 3,
     company: "Account",
-    logo:  account ,
+    logo: account,
     new: true,
     featured: false,
     position: "Junior Frontend Developer",
@@ -58,7 +58,7 @@ export const data = [
   {
     id: 4,
     company: "MyHome",
-    logo:  myhome ,
+    logo: myhome,
     new: false,
     featured: false,
     position: "Junior Frontend Developer",
@@ -73,7 +73,7 @@ export const data = [
   {
     id: 5,
     company: "Loop Studios",
-    logo: studios ,
+    logo: studios,
     new: false,
     featured: false,
     position: "Software Engineer",
@@ -88,7 +88,7 @@ export const data = [
   {
     id: 6,
     company: "FaceIt",
-    logo:  faceit ,
+    logo: faceit,
     new: false,
     featured: false,
     position: "Junior Backend Developer",
@@ -103,7 +103,7 @@ export const data = [
   {
     id: 7,
     company: "Shortly",
-    logo: Shortly,
+    logo: shortly,
     new: false,
     featured: false,
     position: "Junior Developer",
